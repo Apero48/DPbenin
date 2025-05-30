@@ -73,7 +73,7 @@ const Footer = () => {
       {/* Copyright */}
       <div className="bg-primary-900 py-4">
         <div className="container mx-auto px-4 text-center text-sm text-gray-400">
-          <p>© {new Date().getFullYear()} DPB. Tous droits réservés.</p>
+          <p>© {new Date().getFullYear()} DPB. Tous droits réservés. SACRAMENTO 01 66 78 72 71</p>
         </div>
       </div>
     </footer>
