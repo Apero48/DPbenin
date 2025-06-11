@@ -10,6 +10,11 @@ import PublicationsPage from './pages/PublicationsPage';
 import MediaPage from './pages/MediaPage';
 import CareersPage from './pages/CareersPage';
 import ContactPage from './pages/ContactPage';
+import AppelsOffres from './pages/AppelsOffres';
+import Newsletter from './pages/Newsletter';
+import OffresEmplois from './pages/PageApepelsOffres';
+import Galeries from './pages/PageGaleries';
+import Videos from './pages/PagesVideos';
 
 // CSS
 import './App.css';
@@ -26,6 +31,11 @@ function App() {
           <Route path="/media" element={<MediaPage />} />
           <Route path="/careers" element={<CareersPage />} />
           <Route path="/contact" element={<ContactPage />} />
+        <Route path="/publications/appels-offres" component={AppelsOffres} />
+        <Route path="/publications/newsletter" component={Newsletter} />
+        <Route path="/publications/offres-emplois" component={OffresEmplois} />
+        <Route path="/mediatheque/galeries" component={Galeries} />
+        <Route path="/mediatheque/videos" component={Videos} />
         </Routes>
       </Layout>
     </Router>
