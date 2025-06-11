@@ -12,9 +12,9 @@ import CareersPage from './pages/CareersPage';
 import ContactPage from './pages/ContactPage';
 import AppelsOffres from './pages/AppelsOffres';
 import Newsletter from './pages/Newsletter';
-import OffresEmplois from './pages/PageApepelsOffres';
+import OffresEmplois from './pages/PageAppelsOffres';
 import Galeries from './pages/PageGaleries';
-import Videos from './pages/PagesVideos';
+import Videos from './pages/PageVidéos';
 
 // CSS
 import './App.css';
