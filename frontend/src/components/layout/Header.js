@@ -6,6 +6,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentLanguage, setCurrentLanguage] = useState('FR');
+  const [activeMenu, setActiveMenu] = useState(null); // État pour les sous-menus
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,13 +29,17 @@ const Header = () => {
     setCurrentLanguage(currentLanguage === 'FR' ? 'EN' : 'FR');
   };
 
+  const toggleMenu = (menu) => {
+    setActiveMenu(activeMenu === menu ? null : menu);
+  };
+
   return (
     <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-transparent'}`}>
       {/* Top Bar */}
       <div className="bg-primary-700 text-white px-4 py-2">
         <div className="container mx-auto flex justify-between items-center">
           <div className="hidden md:flex space-x-4 text-sm">
-            <a href="tel:+22921312485" className="hover:text-secondary-300">+229 01 55 01 02  85</a>
+            <a href="tel:+22921312485" className="hover:text-secondary-300">+229 01 55 01 02 85</a>
             <a href="mailto:contact@dpb.bj" className="hover:text-secondary-300">info@dpb.bj</a>
           </div>
           <div className="flex items-center space-x-4">
@@ -66,8 +71,60 @@ const Header = () => {
             <NavLink to="/">Accueil</NavLink>
             <NavLink to="/presentation">Présentation</NavLink>
             <NavLink to="/activities">Activités</NavLink>
-            <NavLink to="/publications">Publications</NavLink>
-            <NavLink to="/media">Médiathèque</NavLink>
+
+            {/* Sous-menu Publications */}
+            <div className="relative">
+              <button
+                onClick={() => toggleMenu('publications')}
+                className="text-primary-700 font-medium hover:text-accent-500 transition-colors duration-200"
+              >
+                Publications
+              </button>
+              {activeMenu === 'publications' && (
+                <ul className="absolute bg-white shadow-md mt-2 rounded space-y-2 py-2 w-48">
+                  <li>
+                    <Link to="/publications/appels-offres" className="block px-4 py-2 hover:bg-gray-100">
+                      Appels d'offre
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/publications/newsletter" className="block px-4 py-2 hover:bg-gray-100">
+                      Newsletter
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/publications/offres-emplois" className="block px-4 py-2 hover:bg-gray-100">
+                      Offre d'emploi
+                    </Link>
+                  </li>
+                </ul>
+              )}
+            </div>
+
+            {/* Sous-menu Médiathèque */}
+            <div className="relative">
+              <button
+                onClick={() => toggleMenu('mediatheque')}
+                className="text-primary-700 font-medium hover:text-accent-500 transition-colors duration-200"
+              >
+                Médiathèque
+              </button>
+              {activeMenu === 'mediatheque' && (
+                <ul className="absolute bg-white shadow-md mt-2 rounded space-y-2 py-2 w-48">
+                  <li>
+                    <Link to="/mediatheque/galeries" className="block px-4 py-2 hover:bg-gray-100">
+                      Galeries
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/mediatheque/videos" className="block px-4 py-2 hover:bg-gray-100">
+                      Vidéos
+                    </Link>
+                  </li>
+                </ul>
+              )}
+            </div>
+
             <NavLink to="/careers">Carrières</NavLink>
             <NavLink to="/contact">Contact</NavLink>
           </nav>
