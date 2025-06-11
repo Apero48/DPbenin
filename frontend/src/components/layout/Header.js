@@ -1,25 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaSearch, FaGlobe, FaBars, FaTimes } from 'react-icons/fa';
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentLanguage, setCurrentLanguage] = useState('FR');
   const [activeMenu, setActiveMenu] = useState(null); // État pour les sous-menus
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -34,7 +20,7 @@ const Header = () => {
   };
 
   return (
-    <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-transparent'}`}>
+    <header className="fixed w-full z-50 bg-white shadow-md">
       {/* Top Bar */}
       <div className="bg-primary-700 text-white px-4 py-2">
         <div className="container mx-auto flex justify-between items-center">
@@ -56,7 +42,7 @@ const Header = () => {
       </div>
 
       {/* Main Navigation */}
-      <div className={`container mx-auto px-4 py-4 transition-all duration-300 ${isScrolled ? 'py-2' : 'py-4'}`}>
+      <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center">
